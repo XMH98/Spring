@@ -7,6 +7,8 @@
     <file url="file://$PROJECT_DIR$/spring-parent/spring-aop/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-parent/spring-ioc/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-parent/spring-ioc/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-parent/spring-mvc/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/spring-parent/spring-mvc/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-parent/spring-web/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/spring-parent/spring-web/src/main/resources" charset="UTF-8" />
   </component>
