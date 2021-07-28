@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="otherBean" class="ioc05.OtherBean">
+        <property name="name" value="alice"/>
+    </bean>
+
+    <bean id="springBean" class="ioc05.SpringBean">
+        <property name="otherBean" ref="otherBean"/>
+        <property name="arrays">
+            <list>
+                <value>1</value>
+                <value>2</value>
+                <value>3</value>
+            </list>
+        </property>
+        <property name="list">
+            <list>
+                <!--已定义装配-->
+                <ref bean="otherBean"/>
+                <ref bean="otherBean"/>
+                <!--现场定义装配-->
+                <bean class="ioc05.OtherBean">
+                    <property name="name" value="zhangsan"/>
+                </bean>
+                <bean class="ioc05.OtherBean">
+                    <property name="name" value="lisi"/>
+                </bean>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <!--已定义装配-->
+                <ref bean="otherBean"/>
+                <ref bean="otherBean"/>
+                <!--现场定义装配-->
+                <bean class="ioc05.OtherBean">
+                    <property name="name" value="zhangsan"/>
+                </bean>
+                <bean class="ioc05.OtherBean">
+                    <property name="name" value="lisi"/>
+                </bean>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key-ref="otherBean" value="java.lang.Integer"/>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="key1">value1</prop>
+                <prop key="key1">value2</prop>
+                <prop key="key1">value3</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

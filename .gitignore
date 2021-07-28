@@ -1,0 +1,5 @@
+# Project exclude paths
+/spring-parent/spring-annotation/target/
+/spring-parent/spring-aop/target/
+/spring-parent/spring-ioc/target/
+/spring-parent/spring-web/target/

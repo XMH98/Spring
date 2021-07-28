@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-annotation/spring-annotation.iml" filepath="$PROJECT_DIR$/spring-parent/spring-annotation/spring-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-aop/spring-aop.iml" filepath="$PROJECT_DIR$/spring-parent/spring-aop/spring-aop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-ioc/spring-ioc.iml" filepath="$PROJECT_DIR$/spring-parent/spring-ioc/spring-ioc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-mvc/spring-mvc.iml" filepath="$PROJECT_DIR$/spring-parent/spring-mvc/spring-mvc.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-parent.iml" filepath="$PROJECT_DIR$/spring-parent/spring-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-parent/spring-web/spring-web.iml" filepath="$PROJECT_DIR$/spring-parent/spring-web/spring-web.iml" />
+    </modules>
+  </component>
+</project>

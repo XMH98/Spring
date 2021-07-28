@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:component-scan base-package="aop.service.impl"/>
+    <context:component-scan base-package="aop.advice"/>
+
+    <!--自动创建代理并织入切面
+              proxy-target-class，取值：
+                    false：使用jdk动态代理，默认值
+                    true：使用cglib
+
+    -->
+    <aop:aspectj-autoproxy proxy-target-class="false"/>
+</beans>

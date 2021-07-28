@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--继承配置-->
+    <!--用法1-->
+    <bean id="parent" abstract="true">
+        <property name="password" value="123"/>
+    </bean>
+
+    <bean id="springBean" class="ioc16.SpringBean" parent="parent">
+        <property name="name" value="admin"/>
+        <property name="age" value="23"/>
+    </bean>
+
+    <bean id="otherBean" class="ioc16.OtherBean" parent="parent">
+        <property name="name" value="alice"/>
+        <property name="sex" value="female"/>
+    </bean>
+
+    <!--用法2-->
+    <bean id="parent2" class="ioc16.SpringBean" abstract="true">
+        <property name="password" value="123"/>
+    </bean>
+
+    <bean id="bean1" parent="parent2">
+        <property name="name" value="admin"/>
+        <property name="age" value="23"/>
+    </bean>
+
+    <bean id="bean2" parent="parent2">
+        <property name="name" value="alice"/>
+        <property name="age" value="15"/>
+    </bean>
+</beans>

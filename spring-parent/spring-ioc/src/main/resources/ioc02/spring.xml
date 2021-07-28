@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userDao" class="ioc02.dao.impl.UserDaoImpl"></bean>
+
+    <bean id="userService" class="ioc02.service.ipml.UserServiceIpml">
+        <!--通过ref属性注入bean,进行数据的装配-->
+        <property name="userDao" ref="userDao"/>
+    </bean>
+
+
+</beans>

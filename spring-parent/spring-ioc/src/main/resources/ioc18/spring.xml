@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--在Bean中获取容器-->
+    <bean id="springBean" class="ioc18.SpringBean">
+        <property name="name" value="tom"/>
+    </bean>
+
+    <!--将工具bean添加到IoC容器中-->
+    <bean id="applicationContextHolder" class="ioc18.ApplicationContextHolder"/>
+
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--无参-->
+    <bean id="springBean" class="ioc09.SpringBean">
+        <property name="username" value="tom"/>
+        <property name="password" value="123"/>
+        <property name="age" value="23"/>
+    </bean>
+
+    <!--带参-->
+    <bean id="springBean2" class="ioc09.SpringBean">
+        <constructor-arg name="name" value="alice"/>
+        <constructor-arg name="psw" value="456"/>
+        <constructor-arg name="age" value="45"/>
+    </bean>
+</beans>

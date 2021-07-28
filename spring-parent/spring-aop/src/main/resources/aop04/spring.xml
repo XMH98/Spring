@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--Spring AOP 1.x-->
+
+    <!--配置目标类实例-->
+    <bean id="userServiceTarget" class="aop04.service.impl.UserServiceImpl"/>
+
+    <!--配置Advice-->
+    <bean id="logAdvice" class="aop04.advice.LogAdvice"/>
+    <bean id="goodbyeAdvice" class="aop04.advice.GoodbyeAdvice"/>
+    <bean id="timeAdvice" class="aop04.advice.TimeAdvice">
+        <property name="time" value="3000"/>
+    </bean>
+    <bean id="exceptionAdvice" class="aop04.advice.ExceptionAdvice"/>
+
+    <!--配置Advisor,将Advice注入到Pointcut位置，织入的过程-->
+    <bean id="logAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <!--指定Advice-->
+        <property name="advice" ref="logAdvice"/>
+        <!--配置Pointcut,指定匹配哪些方法-->
+        <property name="mappedNames">
+            <list>
+                <value>login</value>
+                <!--<value>logout</value>-->
+            </list>
+        </property>
+    </bean>
+
+    <bean id="goodbyeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="goodbyeAdvice"/>
+        <property name="mappedNames">
+            <list>
+                <value>logout</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="timeAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="timeAdvice"/>
+        <property name="mappedNames">
+            <list>
+                <value>login</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="exceptionAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="exceptionAdvice"/>
+        <property name="mappedNames">
+            <list>
+                <value>*</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--配置代理-->
+    <bean id="userService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--目标类的实例-->
+        <property name="target" ref="userServiceTarget"/>
+        <!--目标类的接口列表-->
+        <property name="interfaces">
+            <list>
+                <value>aop04.service.UserService</value>
+            </list>
+        </property>
+        <!--交叉业务逻辑-->
+        <property name="interceptorNames">
+            <list>
+                <value>logAdvisor</value>
+                <value>goodbyeAdvisor</value>
+                <value>timeAdvisor</value>
+                <value>exceptionAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>

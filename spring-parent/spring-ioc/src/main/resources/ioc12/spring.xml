@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--实例工厂-->
+    <bean id="springBeanFactory" class="ioc12.SpringBeanFactory"/>
+
+    <!--无参-->
+    <bean id="springBean" factory-bean="springBeanFactory" factory-method="getSpringBean">
+        <property name="name" value="tom"/>
+    </bean>
+
+    <!--有参-->
+    <bean id="springBean2" factory-bean="springBeanFactory" factory-method="getSpringBean">
+        <constructor-arg name="name" value="alice"/>
+    </bean>
+</beans>

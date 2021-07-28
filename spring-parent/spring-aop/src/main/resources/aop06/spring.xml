@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!--配置目标类实例-->
+    <bean id="userService" class="aop06.service.impl.UserServiceImpl"/>
+    <bean id="productService" class="aop06.service.impl.ProductServiceImpl"/>
+
+    <!--配置Advice-->
+    <bean id="logAdvice" class="aop06.advice.LogAdvice"/>
+
+    <!--配置Pointcut并织入-->
+    <aop:config>
+        <!--配置Pointcut-->
+        <aop:pointcut id="pc" expression="within(aop06.service.impl.*)"/>
+        <aop:pointcut id="pc2" expression="execution(void aop06.service.impl.ProductServiceImpl.deleteByName(String))"/>
+        <aop:pointcut id="pc3" expression="execution(* aop06.service.impl.*.*(..))"/>
+        <!--织入-->
+        <aop:aspect ref="logAdvice">
+            <!--将logAdvice中的log方法以前置通知的方式织入到pc对应的切入点-->
+            <!--前置通知-->
+            <aop:before method="log" pointcut-ref="pc3"/>
+            <!--后置通知-->
+            <aop:after-returning method="log2" pointcut-ref="pc" returning="returnValue"/>
+            <!--异常通知-->
+            <aop:after-throwing method="log3" pointcut-ref="pc" throwing="e"/>
+            <!--环绕通知-->
+            <aop:around method="log4" pointcut-ref="pc"/>
+        </aop:aspect>
+    </aop:config>
+
+
+</beans>

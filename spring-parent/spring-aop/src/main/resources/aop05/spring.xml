@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="calcServiceTarget" class="aop05.service.impl.CalcServiceImpl"/>
+
+    <bean id="methodResultCacheAdvice" class="aop05.advice.MethodResultCacheAdvice"/>
+
+    <bean id="methodResultCacheAdvisor" class="org.springframework.aop.support.NameMatchMethodPointcutAdvisor">
+        <property name="advice" ref="methodResultCacheAdvice"/>
+        <property name="mappedNames">
+            <list>
+                <value>*</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="calcService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target" ref="calcServiceTarget"/>
+        <property name="interfaces">
+            <list>
+                <value>aop05.service.CalcService</value>
+            </list>
+        </property>
+        <property name="interceptorNames">
+            <list>
+                <value>methodResultCacheAdvisor</value>
+            </list>
+        </property>
+    </bean>
+
+
+</beans>
