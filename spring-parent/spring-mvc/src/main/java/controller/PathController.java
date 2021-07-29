@@ -96,4 +96,17 @@ public class PathController{
         return "hello";
     }
 
+    /**
+     * 其他属性
+     */
+    @RequestMapping(path="/test8",params = {"id","username=admin","password!=123"})
+    public String test8(){
+        return "hello";
+    }
+
+    @RequestMapping(path = "/test9",headers = {"Cookie","Accept-Language=zh-CN,zh;q=0.9"})
+    public String test9(){
+        return "hello";
+    }
+
 }
