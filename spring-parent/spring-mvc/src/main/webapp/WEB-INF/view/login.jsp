@@ -15,7 +15,7 @@
 <body>
     <h2>登录</h2>
     <span style="color: #ff0000">${loginError}</span>
-    <form action="${pageContext.request.contextPath}/login" method="post">
+    <form action="${pageContext.request.contextPath}/login2" method="post">
         用户名：<input type="text" name="username">
         密码：<input type="password" name="password">
         <input type="submit" value="登录">
