@@ -13,8 +13,9 @@
 
     <!--
         mva的注解驱动，用来简化配置
+            默认会加载许多内置的类型转换器，如果要使用自定义的类型转换器，需要自己指定
     -->
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven conversion-service="conversionService"/>
 
     <!--4.配置handler-->
     <context:component-scan base-package="controller"/>
@@ -38,6 +39,24 @@
     <mvc:view-controller path="/userLogin" view-name="login"/>
     <mvc:view-controller path="/showRegist" view-name="regist"/>
 
+    <!--注册属性编辑器-->
+    <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+        <property name="customEditors">
+            <map>
+                <entry key="entity.Address" value="editor.AddressEditor"/>
+            </map>
+        </property>
+    </bean>-->
+
+    <!--管理自定义转换器-->
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="converter.String2AddressConverter"/>
+                <bean class="converter.Address2StringConverter"/>
+            </set>
+        </property>
+    </bean>
 
 
 </beans>

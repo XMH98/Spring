@@ -12,11 +12,7 @@
 </head>
 <body>
     <h2>注册</h2>
-    <form action="${pageContext.request.contextPath}/user/regist" method="post">
-        用户名：<input type="text" name="username"> <br>
-        密码：<input type="password" name="password"> <br>
-        手机号：<input type="text" name="phone"> <br>
-        邮箱：<input type="text" name="email"> <br>
+    <form action="${pageContext.request.contextPath}/session/regist" method="post">
         年龄：<input type="text" name="age"> <br>
         地址：<input type="text" name="address"> <br>
         <input type="submit" value="注册">

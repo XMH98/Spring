@@ -1,5 +1,6 @@
 package vo;
 
+import entity.Address;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -25,6 +26,16 @@ public class UserVo {
     private String email;
     @Range(min=1,max=120,message = "年龄必须在1-120之间")
     private Integer age;
+
+    private Address address;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 
     public String getUsername() {
         return username;
@@ -74,6 +85,7 @@ public class UserVo {
                 ", phone='" + phone + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
+                ", address=" + address +
                 '}';
     }
 }

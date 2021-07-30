@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vo.UserVo;
 
-import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +19,8 @@ import java.util.List;
 public class UserController {
 
     @RequestMapping("/regist")
-    public String regist(@Valid UserVo userVo, Errors errors){
+    //public String regist(@Valid UserVo userVo, Errors errors){
+    public String regist(UserVo userVo, Errors errors){
         //手动进行服务端数据校验
         //if(userVo.getAge()<0||userVo.getAge()>120){
         //    errors.reject("年龄只能在0-120之间");//手动添加错误消息
@@ -47,5 +47,13 @@ public class UserController {
         System.out.println("UserController.test");
         return "result";
     }
+
+    //注册属性编辑器
+    //@InitBinder
+    //public void initBinder(DataBinder binder){
+    //    binder.registerCustomEditor(Address.class,new AddressEditor());
+    //}
+
+
 
 }
