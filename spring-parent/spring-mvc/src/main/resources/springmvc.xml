@@ -36,6 +36,7 @@
 
     <!--直接访问jsp页面-->
     <mvc:view-controller path="/userLogin" view-name="login"/>
+    <mvc:view-controller path="/showRegist" view-name="regist"/>
 
 
 

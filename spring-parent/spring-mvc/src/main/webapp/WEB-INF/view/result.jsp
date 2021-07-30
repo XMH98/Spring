@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: 44748
@@ -15,5 +16,12 @@
     age:${age} <br>
     sex:${sex} <br>
     address:${address} <br>
+
+    商品类型：
+    <select name="" id="">
+        <c:forEach items="${types}" var="type">
+            <option value="">${type}</option>
+        </c:forEach>
+    </select>
 </body>
 </html>
