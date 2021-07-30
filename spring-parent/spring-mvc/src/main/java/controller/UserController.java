@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import vo.UserVo;
 
+import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.List;
 
@@ -19,11 +20,11 @@ import java.util.List;
 public class UserController {
 
     @RequestMapping("/regist")
-    public String regist(@ModelAttribute UserVo userVo, Errors errors){
+    public String regist(@Valid UserVo userVo, Errors errors){
         //手动进行服务端数据校验
-        if(userVo.getAge()<0||userVo.getAge()>120){
-            errors.reject("年龄只能在0-120之间");//手动添加错误消息
-        }
+        //if(userVo.getAge()<0||userVo.getAge()>120){
+        //    errors.reject("年龄只能在0-120之间");//手动添加错误消息
+        //}
 
         //判断是否有错误
         if(errors.hasErrors()){
