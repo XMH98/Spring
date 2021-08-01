@@ -58,5 +58,18 @@
         </property>
     </bean>
 
+    <!--配置拦截器-->
+    <mvc:interceptors>
+        <!--拦截所有请求-->
+        <bean class="Interceptor.HelloInterceptor"/>
+        <!--拦截指定的请求-->
+        <mvc:interceptor>
+            <mvc:mapping path="/user/regist"/>
+            <mvc:mapping path="/login"/>
+            <mvc:mapping path="/path/*"/>
+            <mvc:exclude-mapping path="/path/test7"/>
+            <bean class="Interceptor.TimeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 
 </beans>
