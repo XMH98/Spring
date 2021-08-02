@@ -25,7 +25,8 @@
         <input type="submit" value="上傳">
     </form>
 
-    <a href="${pageContext.request.contextPath}/file/download?filename=hmbb.JPG">下载文件：使用请求参数传递文件</a>
-    <a href="${pageContext.request.contextPath}/file/download?filename=hmbb.JPG">下载文件：使用rest风格传递文件</a>
+    <a href="${pageContext.request.contextPath}/file/download?filename=hmbb.JPG">下载文件：使用请求参数传递文件</a> <br>
+    <a href="${pageContext.request.contextPath}/file/hmbb.JPG/download2">下载文件：使用rest风格传递文件</a> <br>
+    <a href="${pageContext.request.contextPath}/file/download3?filename=hmbb.JPG">下载文件：使用ResponseEntity</a> <br>
 </body>
 </html>

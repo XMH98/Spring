@@ -1,7 +1,12 @@
 package controller;
 
+import org.apache.commons.io.FileUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
@@ -64,5 +69,31 @@ public class FileController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @RequestMapping("/{filename}/download2")
+    public void download2(@PathVariable String filename, HttpSession session, HttpServletResponse resp){
+        System.out.println(filename);
+        String path = session.getServletContext().getRealPath("/WEB-INF/upload/");
+        File file = new File(path,filename);
+
+        try {
+            resp.setHeader("content-disposition","attachment;filename="+filename);
+            StreamUtils.copy(new FileInputStream(file),resp.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @RequestMapping("/download3")
+    public ResponseEntity<byte[]> download3(String filename,HttpSession session) throws IOException {
+        String path = session.getServletContext().getRealPath("/WEB-INF/upload/");
+        File file = new File(path,filename);
+
+        byte[] bytes = FileUtils.readFileToByteArray(file);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.add("content-disposition","attachment;filename="+filename);
+
+        return new ResponseEntity<byte[]>(bytes,httpHeaders, HttpStatus.OK);//包含：文件数据、响应头、状态码
     }
 }
