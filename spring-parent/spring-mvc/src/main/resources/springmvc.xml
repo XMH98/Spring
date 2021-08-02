@@ -49,6 +49,7 @@
     <mvc:view-controller path="/userLogin" view-name="login"/>
     <mvc:view-controller path="/showRegist" view-name="regist"/>
     <mvc:view-controller path="/showAjax" view-name="ajax"/>
+    <mvc:view-controller path="/showFile" view-name="file"/>
 
     <!--注册属性编辑器-->
     <!--<bean class="org.springframework.beans.factory.config.CustomEditorConfigurer">
@@ -82,5 +83,10 @@
             <bean class="Interceptor.TimeInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!--配置文件解析器，id名稱必須為multipartResolver-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSizePerFile" value="5000000"/>
+    </bean>
 
 </beans>
