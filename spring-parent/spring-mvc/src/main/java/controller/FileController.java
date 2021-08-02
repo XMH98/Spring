@@ -1,14 +1,18 @@
 package controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import util.StringUtils;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 /**
  * Author: 徐明皓
@@ -45,5 +49,20 @@ public class FileController {
         }
 
         return "success";
+    }
+
+    @RequestMapping("/download")
+    public void download(String filename, HttpSession session, HttpServletResponse resp){
+        String path = session.getServletContext().getRealPath("/WEB-INF/upload/");
+        File file = new File(path,filename);
+
+        try {
+            filename = "你好.jpg";
+            filename = new String(filename.getBytes(StandardCharsets.UTF_8),"iso8859-1");
+            resp.setHeader("content-disposition","attachment;filename="+filename);
+            StreamUtils.copy(new FileInputStream(file),resp.getOutputStream());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
